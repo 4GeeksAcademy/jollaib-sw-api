@@ -9,6 +9,10 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import rigoImage from "/src/img/star_background.jpeg";
+import CharInfo from "./views/CharInfo";
+import PlanetsInfo from "./views/PlanetsInfo";
+import StarShipsInfo from "./views/StarShipsInfo";
 
 //create your first component
 const Layout = () => {
@@ -17,8 +21,8 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div>
-			<BrowserRouter basename={basename}>
+		<div className="container-fluid" style={{backgroundImage: `url(${rigoImage})`, backgroundSize: 'cover', height: "100vh", backgroundPosition: "center", backgroundRepeat: "repeat-y"}}>
+			<BrowserRouter basename={basename} >
 				<ScrollToTop>
 					<Navbar />
 					<Routes>
@@ -26,8 +30,10 @@ const Layout = () => {
 						<Route path="/demo" element={<Demo />} />
 						<Route path="/single/:theid" element={<Single />} />
 						<Route path="*" element={<h1>Not found!</h1>} />
+						<Route path="characters/:charid" element={<CharInfo/>}/>
+						<Route path="planets/:planetid" element={<PlanetsInfo/>}/>
+						<Route path="starships/:starShipid" element={<StarShipsInfo/>}/>
 					</Routes>
-					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>
 		</div>

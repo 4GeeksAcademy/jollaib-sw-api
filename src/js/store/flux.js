@@ -12,7 +12,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+			charachters: [],
+			planets: [],
+			starships: [],
+			favourites: []
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -37,6 +41,50 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			getCharachters: () => {
+					fetch("https://www.swapi.tech/api/people").
+					then((response)=> {
+						console.log('Response:' + response.toString())
+						return response.json()
+					}).
+					then((data)=> {
+						console.log('Data:' + data);
+						setStore({charachters: data.results});
+					}).
+					catch((err)=>{return err})
+			},
+			getPlanets: ()=>{
+				fetch("https://www.swapi.tech/api/planets").
+				then((response)=>{
+					return response.json()
+				}).
+				then((data)=> {
+					setStore({planets: data.results});
+				}).
+				catch((err)=>{return err})
+			},
+			getStarShips: () => {
+				fetch('https://swapi.dev/api/starships').
+				then((response)=>{
+					return response.json()
+				}).
+				then((data)=> {
+					console.log('hola' + data.results.name)
+					setStore({starships: data.results});
+				}).
+				catch((err)=> {return err})
+			},
+			addFav: (element) => {
+				const store = getStore(); // Obtener el estado actual
+				const updatedFavourites = [...store.favourites, element]; // Crear una nueva lista de favoritos con el nuevo elemento
+				setStore({ favourites: updatedFavourites }); // Actualizar el estado con la nueva lista de favoritos
+			},
+			deleteFav: (element) => {
+				const store = getStore();
+				const updatedFavourites = store.favourites.filter(item => item !== element);
+				setStore({favourites: updatedFavourites});
+				console.log(updatedFavourites);
 			}
 		}
 	};

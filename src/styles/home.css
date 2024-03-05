@@ -1,0 +1,40 @@
+/* En tu archivo de estilos CSS */
+/* Barra de desplazamiento */
+.container::-webkit-scrollbar {
+  width: 12px; /* Ancho de la barra de desplazamiento */
+}
+
+
+/* Track */
+.container::-webkit-scrollbar-track {
+  background: transparent;
+  box-shadow: 10px 10px 25px red, -10px -10px 25px red;  /* Fondo de la barra de desplazamiento */
+}
+
+/* Handle */
+.container::-webkit-scrollbar-thumb {
+  background: red;
+  /* Color del manejador de la barra de desplazamiento */
+  border-radius: 6px;
+  box-shadow: 10px 10px 25px red, -10px -10px 25px red; /* Radio de borde del manejador de la barra de desplazamiento */
+}
+
+.container {
+  overflow-x: auto;
+   max-width: 100vw;
+  scrollbar-width: 1;
+}
+
+
+h1{
+  color: yellow;
+}
+
+h4{
+  color: blue
+}
+
+body{
+  height: 100%;
+  margin: 0;
+}
