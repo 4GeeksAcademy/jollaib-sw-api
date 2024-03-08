@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import {StarWarsLogo} from '../../img/star_wars_logo.png'
+import StarWarsLogo from '../../img/star_wars_logo.png'
 import { Context } from "../store/appContext";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
@@ -12,8 +12,9 @@ export const Navbar = () => {
 	const {store, actions} = useContext(Context);
 	return (
 		<nav className="navbar navbar-light bg-dark mb-3">
-			<img src={StarWarsLogo}/>
-			<div className="ml-auto" style={{backgroundColor: 'black'}}>
+			<div>
+				<img src={StarWarsLogo} style={{height: '15vh', zIndex: '1000'}}/>
+			</div>
 			<div className="dropdown">
 			  <a className="btn btn-danger dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 			    Favourites {store.favourites.length}
@@ -31,7 +32,6 @@ export const Navbar = () => {
 				})}
 			  </ul>
 </div>
-			</div>
 		</nav>
 	);
 };

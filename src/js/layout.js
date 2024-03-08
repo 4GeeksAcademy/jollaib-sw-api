@@ -14,6 +14,7 @@ import CharInfo from "./views/CharInfo";
 import PlanetsInfo from "./views/PlanetsInfo";
 import StarShipsInfo from "./views/StarShipsInfo";
 
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -21,7 +22,7 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	return (
-		<div className="container-fluid" style={{backgroundImage: `url(${rigoImage})`, backgroundSize: 'cover', height: "100vh", backgroundPosition: "center", backgroundRepeat: "repeat-y"}}>
+		<div className="container-fluid" style={{backgroundImage: `url(${rigoImage})`, backgroundSize: '100vh 100vw', backgroundPosition: "center", backgroundAttachment: 'fixed'}}>
 			<BrowserRouter basename={basename} >
 				<ScrollToTop>
 					<Navbar />
